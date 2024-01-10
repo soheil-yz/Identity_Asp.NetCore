@@ -1,7 +1,12 @@
+using Identity.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DataBaseContext>(e=>e.UseSqlServer("Data Source=SOHEIL\\SQL2022;Initial Catalog=Identity2_DB;Integrated Security=true;TrustServerCertificate=True"));
+
 
 var app = builder.Build();
 
