@@ -52,7 +52,7 @@ namespace Identity.Areas.Admin.Controllers
 
             var Users = _userManager.CreateAsync(newUser, registerDto.Password).Result;
             if (Users.Succeeded)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Users" , new { area="admin"});
 
             string message = "";
             foreach (var item in Users.Errors.ToList())
