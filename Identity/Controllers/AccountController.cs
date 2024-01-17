@@ -64,7 +64,11 @@ namespace Identity.Controllers
                 return View(loginDto);
 
             var Users = _userManager.FindByNameAsync(loginDto.UserName).Result;
-
+            if (Users == null)
+            {
+                TempData["Register"] = "First you have to Register";
+				return RedirectToAction("Register", "Account");
+            }
             _signInManager.SignOutAsync();
 
             var result = _signInManager.PasswordSignInAsync
@@ -82,7 +86,7 @@ namespace Identity.Controllers
             {
 
             }
-            ModelState.AddModelError(string.Empty, "You Could Not Log in !!!");
+            ModelState.AddModelError(string.Empty, "Your Password is Wroing !!!");
 
             return View();
         }

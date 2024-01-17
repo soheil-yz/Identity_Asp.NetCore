@@ -6,7 +6,7 @@ namespace Identity.Models.Entities.Dto
     {
         [Required]
         [EmailAddress]
-        public string UserName { get; set; }
+        public string UserName { get; set; }  //this is Email
         [Required]
         [DataType(DataType.Password)]   
         public string Password { get; set; }
