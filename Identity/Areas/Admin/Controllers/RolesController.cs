@@ -25,5 +25,29 @@ namespace Identity.Areas.Admin.Controllers
             }).ToList();
             return View(role);
         }
+
+        public IActionResult Create ()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(AddNewRoleDto addNewRole)
+        {
+            if (!ModelState.IsValid) 
+            {
+                return View(addNewRole);
+            }
+            Roles roles = new Roles
+            {
+                Description = addNewRole.Description,
+                Name = addNewRole.Name,
+            };
+            var result = _roleManager.CreateAsync(roles).Result;
+            if (result.Succeeded)
+                return RedirectToAction("Index", "Roles", new { area = "admin" });
+
+            ViewBag.Errors= result.Errors.ToList();
+            return View(addNewRole);
+        }
     }
 }

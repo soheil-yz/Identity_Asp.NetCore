@@ -4,6 +4,7 @@ using Identity.Models.Entities;
 using Identity.Models.Entities.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Identity.Areas.Admin.Controllers
 {
@@ -134,6 +135,42 @@ namespace Identity.Areas.Admin.Controllers
             TempData["Message"] = message;
             return View(userDelete);
         }
+        [HttpGet]
+        public IActionResult Details(string id)
+        {
+            var userId = _userManager.FindByIdAsync(id).Result;
+            //var User = _userManager.Users.Select(p => new UserDetailsDto
+            //{
+            //    FirstName = userId.FirstName,
+            //    LastName = userId.LastName,
+            //    Email = userId.Email,
+            //    FullName = $"{userId.FirstName} + {userId.LastName}",
+            //    Id = userId.Id,
+            //    PhoneNumber = userId.PhoneNumber,
+            //    EmailConfirmed = userId.EmailConfirmed,
+            //    UserName = userId.UserName,
+            //    AccessFailedCount = userId.AccessFailedCount,
+
+            //}).ToList();
+            ////////////////////////////////////
+            //var User = _userManager.Users.FirstOrDefault(userId).ToString();
+            UserDetailsDto userDetails = new UserDetailsDto
+            {
+                FirstName = userId.FirstName,
+                LastName = userId.LastName,
+                Email = userId.Email,
+                FullName = $"{userId.FirstName} + {userId.LastName}",
+                Id = userId.Id,
+                PhoneNumber = userId.PhoneNumber,
+                EmailConfirmed = userId.EmailConfirmed,
+                UserName = userId.UserName,
+                AccessFailedCount = userId.AccessFailedCount,
+
+            };
+            return View(userDetails);   
+
+        }
+
     }
 
 }

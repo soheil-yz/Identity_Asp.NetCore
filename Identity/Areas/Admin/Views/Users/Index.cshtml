@@ -61,7 +61,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit","Users", new { id=item.Id , area="Admin"}) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", "Users",new {  id=item.Id , area="Admin"}) |
                     @Html.ActionLink("Delete", "Delete","Users", new { id=item.Id , area="Admin"})
             </td>
         </tr>
