@@ -40,7 +40,9 @@
             <td>
                 @Html.ActionLink("Edit", "Edit","Roles", new {  id=item.Id }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("User In Role", "UserRole","Roles", new {  Name=item.Name , area="Admin" })
+
             </td>
         </tr>
 }

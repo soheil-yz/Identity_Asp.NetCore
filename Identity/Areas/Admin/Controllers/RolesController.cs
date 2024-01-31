@@ -1,4 +1,5 @@
-﻿using Identity.Areas.Admin.Models.Dto.Roles;
+﻿using Identity.Areas.Admin.Models.Dto;
+using Identity.Areas.Admin.Models.Dto.Roles;
 using Identity.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +10,11 @@ namespace Identity.Areas.Admin.Controllers
     public class RolesController : Controller
     {
         private readonly RoleManager<Roles> _roleManager;
-
-        public RolesController(RoleManager<Roles> roleManager)
+        private readonly UserManager<Users> _userManager;
+        public RolesController(RoleManager<Roles> roleManager, UserManager<Users> userManager)
         {
             _roleManager = roleManager;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -60,7 +62,7 @@ namespace Identity.Areas.Admin.Controllers
                 Description = roles.Description,
             };
             return View(editRolesDto);
-        }        
+        }
         [HttpPost]
         public IActionResult Edit(EditRolesDto editRolesDto)
         {
@@ -74,6 +76,21 @@ namespace Identity.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Roles", new { area = "admin" });
 
             return View(editRolesDto);
+        }
+
+        public IActionResult UserRole(string Name)
+        {
+            var userRole = _userManager.GetUsersInRoleAsync(Name).Result;
+
+            return View(userRole.Select(p=>new UserListDto
+            {
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                UserName = p.UserName,
+                PhoneNumber = p.PhoneNumber,
+                Id = p.Id
+
+            }));
         }
     }
 }
