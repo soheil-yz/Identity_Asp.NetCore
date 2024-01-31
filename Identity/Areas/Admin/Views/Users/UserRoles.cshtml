@@ -4,8 +4,9 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>UserRoles</h1>
-<a asp-action="Index">User List</a>
+<h1>User Roles</h1>
+    
+<a asp-action="Index">Roles Of : @ViewBag.UserInfo</a>
 <table class="table">
     <thead>
             <tr>Role Name</tr>

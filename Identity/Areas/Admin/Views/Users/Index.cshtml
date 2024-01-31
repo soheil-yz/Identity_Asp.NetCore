@@ -62,8 +62,9 @@
             <td>
                 @Html.ActionLink("Edit", "Edit","Users", new { id=item.Id , area="Admin"}) |
                     @Html.ActionLink("Details", "Details", "Users",new {  id=item.Id , area="Admin"}) |
-                    @Html.ActionLink("Delete", "Delete","Users", new { id=item.Id , area="Admin"})
-                    @Html.ActionLink("Add Role", "AddUserRole","Users", new { id=item.Id , area="Admin"})
+                    @Html.ActionLink("Delete", "Delete","Users", new { id=item.Id , area="Admin"}) |
+                    @Html.ActionLink("Add Role", "AddUserRole","Users", new { id=item.Id , area="Admin"}) |
+                    @Html.ActionLink("User Roles", "UserRoles","Users", new { id=item.Id , area="Admin"})
             </td>
         </tr>
 }

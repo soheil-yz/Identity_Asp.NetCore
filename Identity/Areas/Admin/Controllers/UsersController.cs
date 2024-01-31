@@ -205,7 +205,7 @@ namespace Identity.Areas.Admin.Controllers
         {
             var user = _userManager.FindByIdAsync(Id).Result;
             var roles = _userManager.GetRolesAsync(user).Result;
-
+            ViewBag.UserInfo = $"{user.FirstName} {user.LastName} , Email : {user.Email}";
             return View(roles);
         }
 
