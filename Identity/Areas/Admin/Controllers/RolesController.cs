@@ -16,7 +16,7 @@ namespace Identity.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var role = _roleManager.Roles.Select(p=> 
+            var role = _roleManager.Roles.Select(p =>
             new RolesListDto
             {
                 Id = p.Id,
@@ -26,14 +26,14 @@ namespace Identity.Areas.Admin.Controllers
             return View(role);
         }
 
-        public IActionResult Create ()
+        public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
         public IActionResult Create(AddNewRoleDto addNewRole)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return View(addNewRole);
             }
@@ -46,8 +46,34 @@ namespace Identity.Areas.Admin.Controllers
             if (result.Succeeded)
                 return RedirectToAction("Index", "Roles", new { area = "admin" });
 
-            ViewBag.Errors= result.Errors.ToList();
+            ViewBag.Errors = result.Errors.ToList();
             return View(addNewRole);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(string id)
+        {
+            var roles = _roleManager.FindByIdAsync(id).Result;
+            EditRolesDto editRolesDto = new EditRolesDto
+            {
+                Name = roles.Name,
+                Description = roles.Description,
+            };
+            return View(editRolesDto);
+        }        
+        [HttpPost]
+        public IActionResult Edit(EditRolesDto editRolesDto)
+        {
+            var role = _roleManager.FindByIdAsync(editRolesDto.Id).Result;
+            role.Name = editRolesDto.Name;
+            role.Description = editRolesDto.Description;
+
+            var result = _roleManager.UpdateAsync(role).Result;
+
+            if (result.Succeeded)
+                return RedirectToAction("Index", "Roles", new { area = "admin" });
+
+            return View(editRolesDto);
         }
     }
 }
