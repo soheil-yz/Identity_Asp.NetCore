@@ -1,0 +1,24 @@
+﻿@model IList<string>  
+@{
+    ViewData["Title"] = "UserRoles";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>UserRoles</h1>
+<a asp-action="Index">User List</a>
+<table class="table">
+    <thead>
+            <tr>Role Name</tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @item
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

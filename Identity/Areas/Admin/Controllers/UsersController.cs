@@ -1,9 +1,10 @@
 ﻿using Identity.Areas.Admin.Models.Dto;
-using Identity.Areas.Admin.Views.Users;
+using Identity.Areas.Admin.Models.Dto.Roles;
 using Identity.Models.Entities;
 using Identity.Models.Entities.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 
 namespace Identity.Areas.Admin.Controllers
@@ -12,9 +13,11 @@ namespace Identity.Areas.Admin.Controllers
     public class UsersController : Controller
     {
         private readonly UserManager<Users> _userManager;
-        public UsersController(UserManager<Users> userManager)
+        private readonly RoleManager<Roles> _roleManager;
+        public UsersController(UserManager<Users> userManager, RoleManager<Roles> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Index()
@@ -82,9 +85,9 @@ namespace Identity.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Edit(UserEditDto userEdit)
         {
-            var user = _userManager.FindByIdAsync(userEdit.Id ).Result;
-            user.FirstName=userEdit.FirstName;
-            user.LastName=userEdit.LastName;
+            var user = _userManager.FindByIdAsync(userEdit.Id).Result;
+            user.FirstName = userEdit.FirstName;
+            user.LastName = userEdit.LastName;
             user.PhoneNumber = userEdit.PhotoNumber;
             user.Email = userEdit.Email;
             user.UserName = userEdit.UserName;
@@ -96,7 +99,7 @@ namespace Identity.Areas.Admin.Controllers
             }
 
             string message = "";
-            foreach(var item in result.Errors.ToList())
+            foreach (var item in result.Errors.ToList())
             {
                 message += item.Description + Environment.NewLine;
             }
@@ -159,7 +162,7 @@ namespace Identity.Areas.Admin.Controllers
                 FirstName = userId.FirstName,
                 LastName = userId.LastName,
                 Email = userId.Email,
-                FullName = $"{userId.FirstName} + {userId.LastName}",
+                FullName = $"{userId.FirstName} {userId.LastName}",
                 Id = userId.Id,
                 PhoneNumber = userId.PhoneNumber,
                 EmailConfirmed = userId.EmailConfirmed,
@@ -167,8 +170,43 @@ namespace Identity.Areas.Admin.Controllers
                 AccessFailedCount = userId.AccessFailedCount,
 
             };
-            return View(userDetails);   
+            return View(userDetails);
 
+        }
+
+        public IActionResult AddUserRole(string Id)
+        {
+            var user = _userManager.FindByIdAsync(Id).Result;
+            var roles = new List<SelectListItem>(
+                _roleManager.Roles.Select(p => new SelectListItem
+                {
+                    Text = p.Name,
+                    Value = p.Name
+                }).ToList());
+
+            return View(new AddUserRoleDto
+            { 
+                Id = Id,
+                Roles = roles,
+                Email = user.Email,
+                FullName = $"{user.FirstName} {user.LastName}",
+            });
+        }
+        [HttpPost]
+        public IActionResult AddUserRole(AddUserRoleDto addRole)
+        {
+            var user = _userManager.FindByIdAsync(addRole.Id).Result;
+            var result = _userManager.AddToRoleAsync(user, addRole.Role).Result;
+            return RedirectToAction("UserRoles", "Users", new { Id = user.Id , area = "Admin" });
+
+        }
+
+        public IActionResult UserRoles(string Id)
+        {
+            var user = _userManager.FindByIdAsync(Id).Result;
+            var roles = _userManager.GetRolesAsync(user).Result;
+
+            return View(roles);
         }
 
     }

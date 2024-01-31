@@ -1,4 +1,4 @@
-﻿namespace Identity.Areas.Admin.Views.Users
+﻿namespace Identity.Areas.Admin.Models.Dto
 {
     public class UserDeleteDto
     {
