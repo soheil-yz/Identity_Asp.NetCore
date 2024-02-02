@@ -8,6 +8,9 @@ namespace Identity.Services
     {
         public Task Execute(string UserEmail, string Body, string Subject)
         {
+            //enable less secure apps in account google with link
+            //https://myaccount.google.com/lesssecureapps
+
             SmtpClient client = new SmtpClient();
             client.Port = 587;
             client.Host = "smtp.gmail.com";
@@ -22,7 +25,7 @@ namespace Identity.Services
             message.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;    
 
             client.Send(message);
-            return Task.CompletedTask;
+            return Task.CompletedTask; 
 
         }
     }

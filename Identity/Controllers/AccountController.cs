@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using Identity.Models.Entities;
 using Identity.Models.Entities.Dto;
+using Identity.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +11,13 @@ namespace Identity.Controllers
     {
         private readonly UserManager<Users> _userManager;
         private readonly SignInManager<Users> _signInManager;
+        private readonly EmailService _emailService;
 
-        public AccountController(UserManager<Users> userManager, SignInManager<Users> signInManager = null)
+        public AccountController(UserManager<Users> userManager, SignInManager<Users> signInManager = null, EmailService emailService = null)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailService = emailService;
         }
         public IActionResult Register()
         {
@@ -39,9 +42,19 @@ namespace Identity.Controllers
 
             var Users = _userManager.CreateAsync(newUser, registerDto.Password).Result;
             if (Users.Succeeded)
-                return RedirectToAction("Index","Home");
+            {
+                var token = _userManager.GenerateEmailConfirmationTokenAsync(newUser).Result;
+                string callBackUrl = Url.Action
+                    ("ConfirmEmail", "Account",
+                    new { UserId = newUser.Id, token = token },
+                    protocol: Request.Scheme);
+                string body = $"Pleas Click On This  <br /> <a href={callBackUrl}>Link !</a>  For Enable Your Portfo";
+                _emailService.Execute(newUser.Email, body, "Enable your Portfo");
 
-            string message ="";
+                return RedirectToAction("DisplayEmail");
+            }
+
+            string message = "";
             foreach (var item in Users.Errors.ToList())
                 message += item.Description + Environment.NewLine;
 
@@ -50,6 +63,14 @@ namespace Identity.Controllers
         }
         #endregion
 
+        public IActionResult ConfirmEmail()
+        {
+            return View();
+        }
+        public IActionResult DisplayEmail()
+        {
+            return View();
+        }
         public IActionResult Login(string returnUrl = "/")
         {
             return View(new LoginDto
@@ -67,7 +88,7 @@ namespace Identity.Controllers
             if (Users == null)
             {
                 TempData["Register"] = "First you have to Register";
-				return RedirectToAction("Register", "Account");
+                return RedirectToAction("Register", "Account");
             }
             _signInManager.SignOutAsync();
 
@@ -98,7 +119,7 @@ namespace Identity.Controllers
         }
     }
 }
- 
+
 
 
 
