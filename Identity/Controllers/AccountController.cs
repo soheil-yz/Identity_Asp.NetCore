@@ -48,6 +48,7 @@ namespace Identity.Controllers
                     ("ConfirmEmail", "Account",
                     new { UserId = newUser.Id, token = token },
                     protocol: Request.Scheme);
+
                 string body = $"Pleas Click On This  <br /> <a href={callBackUrl}>Link !</a>  For Enable Your Portfo";
                 _emailService.Execute(newUser.Email, body, "Enable your Portfo");
 
@@ -63,8 +64,9 @@ namespace Identity.Controllers
         }
         #endregion
 
-        public IActionResult ConfirmEmail()
+        public IActionResult ConfirmEmail(string UserId , string Token)
         {
+
             return View();
         }
         public IActionResult DisplayEmail()

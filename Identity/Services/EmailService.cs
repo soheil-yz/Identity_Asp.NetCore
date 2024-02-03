@@ -18,8 +18,8 @@ namespace Identity.Services
             client.Timeout = 1000000;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential("soheilyazdanii1382@gmail.com", "password");
-            MailMessage message = new MailMessage("soheilyazdanii1382@gmail.com", UserEmail, Subject, Body);
+            client.Credentials = new NetworkCredential("ssoheilaref@gmail.com", "soheil1382");
+            MailMessage message = new MailMessage("ssoheilaref@gmail.com", UserEmail, Subject, Body);
             message.IsBodyHtml = true;
             message.BodyEncoding = UTF8Encoding.UTF8;
             message.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;    
