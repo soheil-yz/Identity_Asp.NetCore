@@ -1,0 +1,46 @@
+﻿@model Identity.Models.Entities.Dto.Accounts.ResetPasswordDto
+
+@{
+    ViewData["Title"] = "ResetPaaword";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ResetPaaword</h1>
+
+<h4>ResetPasswordDto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ResetPaaword">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Token" class="control-label"></label>
+                <input asp-for="Token" class="form-control" />
+                <span asp-validation-for="Token" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

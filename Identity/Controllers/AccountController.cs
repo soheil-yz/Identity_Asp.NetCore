@@ -165,6 +165,16 @@ namespace Identity.Controllers
             ViewBag.meesage = "لینک تنظیم مجدد کلمه عبور برای ایمیل شما ارسال شد";
             return View();
         }
+        
+        public IActionResult ResetPaaword(string UserId , string token )
+        {
+
+            return View(new ResetPasswordDto
+            {
+                Token = token,
+                UserId = UserId
+            });
+        }
     }
 }
 
