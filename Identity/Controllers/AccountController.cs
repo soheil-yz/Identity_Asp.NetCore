@@ -143,12 +143,32 @@ namespace Identity.Controllers
         [HttpPost]
         public IActionResult ForgotPassword(ForgotPasswordConfirmationDto forgotPassword)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(forgotPassword);
+            }
+            var user = _userManager.FindByEmailAsync(forgotPassword.Email).Result;
+            if (user == null || _userManager.IsEmailConfirmedAsync(user).Result == false)
+            {
+                ViewBag.meesage = "ممکن است ایمیل وارد شده معتبر نباشد! و یا اینکه ایمیل خود را تایید نکرده باشید";
+                return View();
+            }
+            string token = _userManager.GeneratePasswordResetTokenAsync(user).Result;
+            string callbackUrl = Url.Action("ResetPaaword", "Accout", new
+            {
+                UserId = user.Id,
+                token = token
+            },protocol:Request.Scheme);
+
+            string body = $"برای تنظیم مجدد کلمه عبور بر روی لینک زیر کلیک کنید <br/> <a href={callbackUrl}> link reset Password </a>";
+            _emailService.Execute(user.Email, body, "فراموشی رمز عبور");
+            ViewBag.meesage = "لینک تنظیم مجدد کلمه عبور برای ایمیل شما ارسال شد";
             return View();
         }
     }
 }
 
 
-
+    
 
 
