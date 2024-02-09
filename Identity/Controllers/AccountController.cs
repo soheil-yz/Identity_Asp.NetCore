@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using Identity.Models.Entities;
 using Identity.Models.Entities.Dto;
+using Identity.Models.Entities.Dto.Accounts;
 using Identity.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace Identity.Controllers
         private readonly SignInManager<Users> _signInManager;
         private readonly EmailService _emailService;
 
-        public AccountController(UserManager<Users> userManager, SignInManager<Users> signInManager , EmailService emailService = null)
+        public AccountController(UserManager<Users> userManager, SignInManager<Users> signInManager, EmailService emailService = null)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -133,6 +134,16 @@ namespace Identity.Controllers
         {
             _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ForgotPassword(ForgotPasswordConfirmationDto forgotPassword)
+        {
+            return View();
         }
     }
 }
