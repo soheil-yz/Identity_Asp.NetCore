@@ -1,5 +1,6 @@
 using Identity.Data;
 using Identity.Models.Entities;
+using Identity.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,8 @@ builder.Services.AddDbContext<DataBaseContext>(e=>e.UseSqlServer("Data Source=SO
 builder.Services.AddIdentity<Users, Roles>()
     .AddEntityFrameworkStores<DataBaseContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<EmailService>();
 
 var app = builder.Build();
 

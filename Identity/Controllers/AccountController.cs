@@ -13,7 +13,7 @@ namespace Identity.Controllers
         private readonly SignInManager<Users> _signInManager;
         private readonly EmailService _emailService;
 
-        public AccountController(UserManager<Users> userManager, SignInManager<Users> signInManager = null, EmailService emailService = null)
+        public AccountController(UserManager<Users> userManager, SignInManager<Users> signInManager , EmailService emailService = null)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -45,9 +45,12 @@ namespace Identity.Controllers
             {
                 var token = _userManager.GenerateEmailConfirmationTokenAsync(newUser).Result;
                 string callBackUrl = Url.Action
-                    ("ConfirmEmail", "Account",
-                    new { UserId = newUser.Id, token = token },
-                    protocol: Request.Scheme);
+                    ("ConfirmEmail", "Account", new
+                    {
+                        UserId = newUser.Id
+                    ,
+                        token = token
+                    }, protocol: Request.Scheme);
 
                 string body = $"Pleas Click On This  <br /> <a href={callBackUrl}>Link !</a>  For Enable Your Portfo";
                 _emailService.Execute(newUser.Email, body, "Enable your Portfo");
@@ -64,7 +67,7 @@ namespace Identity.Controllers
         }
         #endregion
 
-        public IActionResult ConfirmEmail(string UserId , string Token)
+        public IActionResult ConfirmEmail(string UserId, string Token)
         {
             if (UserId == null || Token == null)
             {
