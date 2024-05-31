@@ -9,113 +9,115 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Identity
 build_property.RootNamespace = Identity
-build_property.ProjectDir = C:\Users\sohei\OneDrive\Desktop\ایمان تقوا وعمل صالح\LittleProjects\LittleProjects.Net\Identity_2\Identity_2\Identity\Identity\
+build_property.ProjectDir = E:\ایمان تقوا وعمل صالح\LittleProjects\LittleProjects.Net\Identity_2\Identity_2\Identity\Identity\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\sohei\OneDrive\Desktop\ایمان تقوا وعمل صالح\LittleProjects\LittleProjects.Net\Identity_2\Identity_2\Identity\Identity
+build_property.MSBuildProjectDirectory = E:\ایمان تقوا وعمل صالح\LittleProjects\LittleProjects.Net\Identity_2\Identity_2\Identity\Identity
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Roles/Create.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Roles/Edit.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Roles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Roles/Index.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Roles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Roles/UserRole.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Roles/UserRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcVXNlclJvbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/AddUserRole.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/AddUserRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcQWRkVXNlclJvbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Create.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Delete.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Details.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Edit.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Index.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/UserRoles.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/Users/UserRoles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcVXNlclJvbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/_ViewImports.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/_ViewStart.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/DisplayEmail.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/DisplayEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEaXNwbGF5RW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/ForgotPassword.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/Login.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/Register.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/ResetPaaword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhYXdvcmQuY3NodG1s
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Home/Index.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Home/Privacy.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Shared/Error.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Shared/_LayoutAdmin.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/_ViewImports.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/_ViewStart.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohei/OneDrive/Desktop/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Shared/_Layout.cshtml]
+[E:/ایمان تقوا وعمل صالح/LittleProjects/LittleProjects.Net/Identity_2/Identity_2/Identity/Identity/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-elpxs0ehl7

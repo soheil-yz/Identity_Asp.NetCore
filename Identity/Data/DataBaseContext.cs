@@ -12,19 +12,19 @@ namespace Identity.Data
         }
 
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            //برای اینکه بخواهیم ستونی را پاک کنیم باید گیت اگنور فعال کنیم برای فعال کردن باید کلید های هر 
-            //تیبل را معرفی کنیم بعد از گیت ایگنور استفاده میکنیم
-            builder.Entity<IdentityUserLogin<string>>().HasKey(p => new
-            { p.ProviderKey, p.LoginProvider });
-            builder.Entity<IdentityUserRole<string>>().HasKey(p => new
-            { p.UserId, p.RoleId});            
-            builder.Entity<IdentityUserToken<string>>().HasKey(p => new
-            { p.UserId, p.LoginProvider , p.Name});
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    //برای اینکه بخواهیم ستونی را پاک کنیم باید گیت اگنور فعال کنیم برای فعال کردن باید کلید های هر 
+        //    //تیبل را معرفی کنیم بعد از گیت ایگنور استفاده میکنیم
+        //    builder.Entity<IdentityUserLogin<string>>().HasKey(p => new
+        //    { p.ProviderKey, p.LoginProvider });
+        //    builder.Entity<IdentityUserRole<string>>().HasKey(p => new
+        //    { p.UserId, p.RoleId});            
+        //    builder.Entity<IdentityUserToken<string>>().HasKey(p => new
+        //    { p.UserId, p.LoginProvider , p.Name});
 
-            builder.Entity<Users>().Ignore(p=> p.NormalizedEmail);
-            //base.OnModelCreating(builder);  
-        }
+        //    builder.Entity<Users>().Ignore(p=> p.NormalizedEmail);
+        //    //base.OnModelCreating(builder);  
+        //}
     }
 }
