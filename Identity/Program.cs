@@ -32,7 +32,7 @@ builder.Services.Configure<IdentityOptions>(O => {
 builder.Services.ConfigureApplicationCookie(o =>
 {
     o.ExpireTimeSpan = TimeSpan.FromMinutes(10);   //after 10min auto logout
-    o.AccessDeniedPath = "Account/AccessDenied";
+    //o.AccessDeniedPath = "Account/AccessDenied";
     o.SlidingExpiration = true;  //***
 });
 
