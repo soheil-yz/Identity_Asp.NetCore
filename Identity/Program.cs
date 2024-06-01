@@ -14,6 +14,25 @@ builder.Services.AddIdentity<Users, Roles>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<EmailService>();
+// Setting Identity
+builder.Services.Configure<IdentityOptions>(O => {
+    //O.User.AllowedUserNameCharacters = "abcd"
+    O.User.RequireUniqueEmail = true;  //email is Uniq
+    O.Password.RequireDigit = false;
+    O.Password.RequireLowercase = false;
+    O.Password.RequireNonAlphanumeric = false;  //!$#^#@
+    O.Password.RequireUppercase = false;
+    //LockOut Setting
+    O.Lockout.MaxFailedAccessAttempts = 3;
+    O.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMilliseconds(30);
+}) ;
+//
+builder.Services.ConfigureApplicationCookie(o =>
+{
+    o.ExpireTimeSpan = TimeSpan.FromMinutes(10);   //after 10min auto logout
+    o.AccessDeniedPath = "Account/AccessDenied";
+    o.SlidingExpiration = true;  //***
+});
 
 var app = builder.Build();
 
