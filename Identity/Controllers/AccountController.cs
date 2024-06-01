@@ -165,12 +165,16 @@ namespace Identity.Controllers
             {
                 return BadRequest();
             }
+            
             var providers = _userManager.GetValidTwoFactorProvidersAsync(user).Result;
+            TwoFactorLoginDto model = new TwoFactorLoginDto();
             if (providers.Contains("Email"))
             {
                 string EmailCode = _userManager.GenerateTwoFactorTokenAsync(user, "Email").Result;
                 EmailService emailService = new EmailService();
                 emailService.Execute(user.Email, $"Two Factory Code:{EmailCode} ","Two Factory Login");
+                model.Provider = "Email";
+                model.IsPersistent = IsPersistent;
 
             }
             else if (providers.Contains("Phone"))
@@ -178,10 +182,36 @@ namespace Identity.Controllers
                 string smsCode = _userManager.GenerateTwoFactorTokenAsync(user , "Phone").Result;
                 SMSService sms = new SMSService();
                 sms.Send(user.PhoneNumber , smsCode);
+                model.Provider = "Phone";
+                model.IsPersistent = IsPersistent;
             }
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult TwoFactorLogin(TwoFactorLoginDto twoFactor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(twoFactor);
+            }
+            var user = _signInManager.GetTwoFactorAuthenticationUserAsync().Result;
+            if(user == null)
+            {
+                return BadRequest();
+            }
+            
+            var result = _signInManager.TwoFactorSignInAsync(twoFactor.Provider , twoFactor.Code , twoFactor.IsPersistent , false).Result;
+            if (result.Succeeded)
+            {
+                return RedirectToAction("index");
+            }
+            else if (result.IsLockedOut)
+            {
+                ModelState.AddModelError("", "Block Your Account");
+            }
+
             return View();
         }
-
 
         public IActionResult LogOut()
         {
