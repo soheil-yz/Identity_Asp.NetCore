@@ -24,8 +24,33 @@ namespace Identity.Controllers
             _signInManager = signInManager;
             _emailService = emailService;
         }
+
+        public IActionResult Index()
+        {
+            var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+            MyAccountInfoDto accountInfo = new MyAccountInfoDto()
+            {
+                Email = user.Email,
+                EmailConfirmed = user.EmailConfirmed,
+                FullName = user.FirstName,
+                Id = user.Id,
+                PhoneNumber = user.PhoneNumber,
+                PhoneConfirmed = user.PhoneNumberConfirmed,
+                TwoFactorEnabled = user.TwoFactorEnabled,
+                UserName = user.UserName
+            };
+            return View(accountInfo);
+        }
+        [Authorize]
+        public IActionResult TwoFactoryEnable()
+        {
+            var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+            var result = _userManager.SetTwoFactorEnabledAsync(user,!user.TwoFactorEnabled).Result;
+            return RedirectToAction(nameof(Index));
+        }
         public IActionResult Register()
         {
+
             return View();
         }
         [HttpPost]
@@ -121,9 +146,9 @@ namespace Identity.Controllers
             if (result.Succeeded)
                 return Redirect(loginDto.ReturnUrl);
 
-            if (result.RequiresTwoFactor)
+            if (result.RequiresTwoFactor == true)
             {
-
+                return RedirectToAction("TwoFactorLogin", new { loginDto.UserName, loginDto.IsPersistent});
             }
             if (result.IsLockedOut)
             {
@@ -133,6 +158,30 @@ namespace Identity.Controllers
 
             return View();
         }
+        public IActionResult TwoFactorLogin(string UserName, bool IsPersistent)
+        {
+            var user = _userManager.FindByNameAsync (UserName).Result;
+            if(user == null)
+            {
+                return BadRequest();
+            }
+            var providers = _userManager.GetValidTwoFactorProvidersAsync(user).Result;
+            if (providers.Contains("Email"))
+            {
+                string EmailCode = _userManager.GenerateTwoFactorTokenAsync(user, "Email").Result;
+                EmailService emailService = new EmailService();
+                emailService.Execute(user.Email, $"Two Factory Code:{EmailCode} ","Two Factory Login");
+
+            }
+            else if (providers.Contains("Phone"))
+            {
+                string smsCode = _userManager.GenerateTwoFactorTokenAsync(user , "Phone").Result;
+                SMSService sms = new SMSService();
+                sms.Send(user.PhoneNumber , smsCode);
+            }
+            return View();
+        }
+
 
         public IActionResult LogOut()
         {
