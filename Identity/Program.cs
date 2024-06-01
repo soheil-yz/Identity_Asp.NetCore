@@ -1,4 +1,5 @@
 using Identity.Data;
+using Identity.Helper;
 using Identity.Models.Entities;
 using Identity.Services;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataBaseContext>(e=>e.UseSqlServer("Data Source=SOHEIL\\SQL2022;Initial Catalog=Identity2_DB;Integrated Security=true;TrustServerCertificate=True"));
 builder.Services.AddIdentity<Users, Roles>()
     .AddEntityFrameworkStores<DataBaseContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddPasswordValidator<MyPasswordValidator>();
 
 builder.Services.AddScoped<EmailService>();
 // Setting Identity
