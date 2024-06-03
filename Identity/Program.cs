@@ -1,10 +1,11 @@
-using Identity.Data;
+ï»¿using Identity.Data;
 using Identity.Helper;
 using Identity.Models.Entities;
 using Identity.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using static Identity.Helper.AddMyClaims;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,9 +41,22 @@ builder.Services.ConfigureApplicationCookie(o =>
 });
 
 //*****
-//builder.Services.AddScoped<IUserClaimsPrincipalFactory<Users>, AddMyClaims>();  æŞÊ? ã?ÎæÇ? ŞÇäæä ÇÖÇİå ˜ä? Èå ãÔ˜á ã?ÎæÑ? Ó ÈÇ ÑæÔ Ï?Ñ ˜á?ã ÇÖÇİå ã?˜ä?ã 
+//builder.Services.AddScoped<IUserClaimsPrincipalFactory<Users>, AddMyClaims>();  ÙˆÙ‚ØªÛŒ Ù…ÛŒØ®ÙˆØ§ÛŒ Ù‚Ø§Ù†ÙˆÙ† Ø§Ø¶Ø§ÙÙ‡ Ú©Ù†ÛŒ Ø¨Ù‡ Ù…Ø´Ú©Ù„ Ù…ÛŒØ®ÙˆØ±ÛŒ Ù¾Ø³ Ø¨Ø§ Ø±ÙˆØ´ Ø¯ÛŒÚ¯Ø± Ú©Ù„ÛŒÙ… Ø§Ø¶Ø§ÙÙ‡ Ù…ÛŒÚ©Ù†ÛŒÙ… 
 builder.Services.AddScoped<IClaimsTransformation, AddClaim>();
 //****
+
+builder.Services.AddAuthorization(o =>
+{
+    o.AddPolicy("Buyer1" , policy =>
+    {
+        policy.RequireClaim("Buyer");
+    });    
+    o.AddPolicy("BloodType", policy =>
+    {
+        policy.RequireClaim("Blood" , "Ap" , "O");
+    });
+
+} );
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

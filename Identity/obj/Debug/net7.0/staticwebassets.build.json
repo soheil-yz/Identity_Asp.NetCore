@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UFURacn78WUxLj/P/hCvVLEZU6yQJ5tLklOgk7KKQGY=",
+  "Hash": "CaHQWZdzO1hLC4TrsmFLfsBkxb8/a3bPqcWCLX0FIE4=",
   "Source": "Identity",
   "BasePath": "_content/Identity",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "E:\\ایمان تقوا وعمل صالح\\LittleProjects\\LittleProjects.Net\\Identity_2\\Identity_2\\Identity\\Identity\\wwwroot\\css\\Style.css",
+      "SourceId": "Identity",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\ایمان تقوا وعمل صالح\\LittleProjects\\LittleProjects.Net\\Identity_2\\Identity_2\\Identity\\Identity\\wwwroot\\",
+      "BasePath": "_content/Identity",
+      "RelativePath": "css/Style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Style.css"
     },
     {
       "Identity": "E:\\ایمان تقوا وعمل صالح\\LittleProjects\\LittleProjects.Net\\Identity_2\\Identity_2\\Identity\\Identity\\wwwroot\\favicon.ico",

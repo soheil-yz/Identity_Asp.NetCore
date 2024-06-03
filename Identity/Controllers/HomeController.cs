@@ -1,4 +1,5 @@
 ﻿using Identity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -22,11 +23,16 @@ namespace Identity.Controllers
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [Authorize(Policy = "Buyer1")]
+        public string JustBuyer()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return "Are You Buyer";
+        }
+
+        [Authorize(Policy = "BloodType")]
+        public string Blood()
+        {
+            return "Ap Or O";
         }
     }
 }
