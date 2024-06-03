@@ -36,6 +36,8 @@ builder.Services.ConfigureApplicationCookie(o =>
     o.SlidingExpiration = true;  //***
 });
 
+builder.Services.AddScoped<IUserClaimsPrincipalFactory<Users>, AddMyClaims>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

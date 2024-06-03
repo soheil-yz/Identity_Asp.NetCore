@@ -13,6 +13,7 @@
         <td>Issuer</td>
         <td>Type</td>
         <td>Value</td>
+        <td>Delete</td>
     </tr>
     @foreach(var item in Model)
     {   <tr>
@@ -20,6 +21,9 @@
             <td>@item.Issuer</td>
             <td>@item.Type</td>
             <td>@item.Value</td>
+            <td>
+                <a asp-action="Delete" asp-route-ClaimValue="@item.Type" class="btn btn-danger">Delete</a>
+            </td>
         </tr>
     }
 </table>
