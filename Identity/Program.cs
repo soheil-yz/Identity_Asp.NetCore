@@ -3,6 +3,7 @@ using Identity.Helper;
 using Identity.Models.Entities;
 using Identity.Services;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DataBaseContext>(e=>e.UseSqlServer("Data Source=SOHEIL\\SQL2022;Initial Catalog=Identity2_DB;Integrated Security=true;TrustServerCertificate=True"));
+builder.Services.AddDbContext<DataBaseContext>(e => e.UseSqlServer("Data Source=SOHEIL\\SQL2022;Initial Catalog=Identity2_DB;Integrated Security=true;TrustServerCertificate=True"));
 builder.Services.AddIdentity<Users, Roles>()
     .AddEntityFrameworkStores<DataBaseContext>()
     .AddRoles<Roles>()
@@ -21,7 +22,8 @@ builder.Services.AddIdentity<Users, Roles>()
 
 builder.Services.AddScoped<EmailService>();
 // Setting Identity
-builder.Services.Configure<IdentityOptions>(O => {
+builder.Services.Configure<IdentityOptions>(O =>
+{
     //O.User.AllowedUserNameCharacters = "abcd"
     O.User.RequireUniqueEmail = true;  //email is Uniq
     O.Password.RequireDigit = false;
@@ -31,7 +33,7 @@ builder.Services.Configure<IdentityOptions>(O => {
     //LockOut Setting
     O.Lockout.MaxFailedAccessAttempts = 3;
     O.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMilliseconds(30);
-}) ;
+});
 //
 builder.Services.ConfigureApplicationCookie(o =>
 {
@@ -43,20 +45,25 @@ builder.Services.ConfigureApplicationCookie(o =>
 //*****
 //builder.Services.AddScoped<IUserClaimsPrincipalFactory<Users>, AddMyClaims>();  وقتی میخوای قانون اضافه کنی به مشکل میخوری پس با روش دیگر کلیم اضافه میکنیم 
 builder.Services.AddScoped<IClaimsTransformation, AddClaim>();
+builder.Services.AddSingleton<IAuthorizationHandler, UserCreditHandler>();
 //****
 
 builder.Services.AddAuthorization(o =>
 {
-    o.AddPolicy("Buyer1" , policy =>
+    o.AddPolicy("Buyer1", policy =>
     {
         policy.RequireClaim("Buyer");
-    });    
+    });
     o.AddPolicy("BloodType", policy =>
     {
-        policy.RequireClaim("Blood" , "Ap" , "O");
+        policy.RequireClaim("Blood", "Ap", "O");
+    }); 
+    o.AddPolicy("Credit", policy =>
+    {
+        policy.Requirements.Add(new UserCreditRequerment(10000));
     });
 
-} );
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

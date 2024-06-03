@@ -29,7 +29,7 @@ namespace Identity.Helper
                     if (identity != null)
                     {
                         identity.AddClaim(new Claim("TestClaim" , "Yes" , ClaimValueTypes.String));
-
+                        identity.AddClaim(new Claim("Credit" , "10000" , ClaimValueTypes.String));
                     }
                 }
                     return Task.FromResult(principal);

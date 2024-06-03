@@ -34,5 +34,11 @@ namespace Identity.Controllers
         {
             return "Ap Or O";
         }
+
+        [Authorize(Policy = "Credit")]
+        public string Credit()
+        {
+            return "Credit";
+        }
     }
 }
