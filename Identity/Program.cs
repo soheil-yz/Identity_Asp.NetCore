@@ -2,8 +2,10 @@ using Identity.Data;
 using Identity.Helper;
 using Identity.Models.Entities;
 using Identity.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using static Identity.Helper.AddMyClaims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataBaseContext>(e=>e.UseSqlServer("Data Source=SOHEIL\\SQL2022;Initial Catalog=Identity2_DB;Integrated Security=true;TrustServerCertificate=True"));
 builder.Services.AddIdentity<Users, Roles>()
     .AddEntityFrameworkStores<DataBaseContext>()
+    .AddRoles<Roles>()
     .AddDefaultTokenProviders()
     .AddPasswordValidator<MyPasswordValidator>();
 
@@ -36,8 +39,10 @@ builder.Services.ConfigureApplicationCookie(o =>
     o.SlidingExpiration = true;  //***
 });
 
-builder.Services.AddScoped<IUserClaimsPrincipalFactory<Users>, AddMyClaims>();
-
+//*****
+//builder.Services.AddScoped<IUserClaimsPrincipalFactory<Users>, AddMyClaims>();  Êﬁ ? „?ŒÊ«? ﬁ«‰Ê‰ «÷«›Â ò‰? »Â „‘ò· „?ŒÊ—? Å” »« —Ê‘ œ?ê— ò·?„ «÷«›Â „?ò‰?„ 
+builder.Services.AddScoped<IClaimsTransformation, AddClaim>();
+//****
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
