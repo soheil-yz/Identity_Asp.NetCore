@@ -10,7 +10,7 @@ namespace Identity.Data
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
         }
-
+        public DbSet<Blog> Blogs { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder builder)
         //{
