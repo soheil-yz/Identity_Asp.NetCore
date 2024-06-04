@@ -21,7 +21,7 @@ namespace Identity.Helper
             var claim = context.User.FindFirst("Credit");
             if(claim != null)
             {
-                int credit = int.Parse(claim.Value);
+                int credit = int.Parse(claim?.Value);
                 if(credit >= requirement.Credit)
                 {
                     context.Succeed(requirement);

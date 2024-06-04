@@ -9,5 +9,6 @@ namespace Identity.Models.Entities.Dto.Blog
         public string Body { get; set; }
         [BindNever]
         public string UserId { get; set; }
+        public string UserName { get; set; }
     }
 }
