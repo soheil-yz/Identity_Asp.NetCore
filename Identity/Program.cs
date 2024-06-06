@@ -54,6 +54,10 @@ builder.Services.AddAuthorization(o =>
     o.AddPolicy("Buyer1", policy =>
     {
         policy.RequireClaim("Buyer");
+    });    
+    o.AddPolicy("AdminUsers", policy =>
+    {
+        policy.RequireRole("Admin");
     });
     o.AddPolicy("BloodType", policy =>
     {

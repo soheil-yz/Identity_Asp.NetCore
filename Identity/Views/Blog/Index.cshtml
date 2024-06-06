@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Identity.Models.Entities.Dto.Blog.CreateBlog>
+@using Microsoft.AspNetCore.Authorization;
+@inject IAuthorizationService _service
 
 @{
     ViewData["Title"] = "Index";
@@ -45,7 +47,11 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
              <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    @if (_service.AuthorizeAsync(User, item, "IsBlogForYou").Result.Succeeded)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+
+                    }
 
              </td>
 
