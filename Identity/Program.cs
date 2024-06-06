@@ -46,6 +46,7 @@ builder.Services.ConfigureApplicationCookie(o =>
 //builder.Services.AddScoped<IUserClaimsPrincipalFactory<Users>, AddMyClaims>();  وقتی میخوای قانون اضافه کنی به مشکل میخوری پس با روش دیگر کلیم اضافه میکنیم 
 builder.Services.AddScoped<IClaimsTransformation, AddClaim>();
 builder.Services.AddSingleton<IAuthorizationHandler, UserCreditHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, IsBlogForUserAuthorizationHandler>();
 //****
 
 builder.Services.AddAuthorization(o =>
@@ -61,6 +62,10 @@ builder.Services.AddAuthorization(o =>
     o.AddPolicy("Credit", policy =>
     {
         policy.Requirements.Add(new UserCreditRequerment(10000));
+    });    
+    o.AddPolicy("IsBlogForYou", policy =>
+    {
+        policy.Requirements.Add(new BlogRequirement());
     });
 
 });

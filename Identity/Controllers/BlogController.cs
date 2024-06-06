@@ -1,21 +1,28 @@
 ﻿using Identity.Data;
 using Identity.Models.Entities;
 using Identity.Models.Entities.Dto.Blog;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Identity.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class BlogController : Controller
     {
         private readonly DataBaseContext _context;
         private readonly UserManager<Users> _userManager;
+        private readonly IAuthorizationService _service;
 
-        public BlogController(DataBaseContext context, UserManager<Users> userManager)
+        public BlogController(
+            DataBaseContext context, 
+            UserManager<Users> userManager, 
+            IAuthorizationService service)
         {
             _context = context;
             _userManager = userManager;
+            _service = service;
         }
         public IActionResult Index()
         {
@@ -26,8 +33,9 @@ namespace Identity.Controllers
                 Title = p.Title,
                 UserName = p.users.UserName
             });
-            return View();
+            return View(blog);
         }
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -40,23 +48,38 @@ namespace Identity.Controllers
             {
                 Body = blog.Body,
                 Title = blog.Title,
-                users = user
-
-
+                users = user ,
+                UserId = user.Id
             };
-            _context.Add(newblog);    
+            _context.Add(newblog);
+            _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
-
-        public IActionResult Edit(long Id) 
+        
+        public IActionResult Edit(long Id)
         {
-            var blog = _context.Blogs.Find(Id);
-            return View(new CreateBlog
+            var blog = _context.Blogs.
+                Include(p => p.users).
+                Where(p => p.Id == Id).
+                Select(p => new CreateBlog
+                {
+                    Body = p.Body,
+                    Title = p.Title,
+                    Id = p.Id,
+                    UserId = p.UserId,
+                    UserName = p.users.UserName
+                }).FirstOrDefault();
+            var result = _service.AuthorizeAsync(User, blog, "IsBlogForYou").Result;
+            if (result.Succeeded)
             {
-                Body = blog.Body,
-                Title = blog.Title,
-                Id = blog.Id
-            });      
+                return View(blog);
+            }
+            else
+            {
+                return new ChallengeResult();
+            }
+           
         }
         [HttpPost]
         public IActionResult Edit(Blog blog)
